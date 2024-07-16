@@ -1,15 +1,34 @@
 def log_to(enter):
-    file = open("History.txt","w")
+    file = open("History.txt","a")
     file.write(enter + "\n")
+def read():
+    file = open("History.txt","r")
+    history =file.readlines()
+    try:
+        if history:
+            print("Showing History:")
+            for line in history:
+                print(line.strip())
+            else:
+                print("No History Found")
+    except Exception as e:
+        print(f"an error occured while reading the history:{e}")
 
 
 
 
 
 Shrey = True
-print("1-Addition \n2-Substraction\n3-Multiplication\n4-Division\n5-power to\n6-Rounding\n7-Remaining\noo-Exit")
+print("1-Addition \n2-Substraction\n3-Multiplication\n4-Division\n5-power to\n6-Rounding\n7-Remaining\n8-Show History\noo-Exit")
 
 while Shrey is True:
+    opp = int(input("Enter the Operator:"))
+    if opp==8:
+        read()
+
+
+
+
     First = int(input("Enter the first digit:"))
     if First == 00:
         print("Closing the app")
@@ -18,7 +37,7 @@ while Shrey is True:
     if Sec==00:
         print("Closing the app")
         exit()
-    opp = int(input("Enter the Operator:"))
+
     if opp == 1:
         Sum = First + Sec
         Sum2 = (f"{First}+{Sec}={Sum}")
@@ -28,7 +47,6 @@ while Shrey is True:
         Sum = First - Sec
         Sum2 = (f"{First}-{Sec}={Sum}")
         log_to(Sum2)
-        log_to(Sum)
         print(Sum)
     elif opp == 3:
         Sum = First * Sec
@@ -56,7 +74,7 @@ while Shrey is True:
         log_to(Sum2)
         print(Sum)
     elif opp == 00:
-        shrey = False
+        Shrey = False
         print("Closing the app")
     else:
         print("Wrong input")
